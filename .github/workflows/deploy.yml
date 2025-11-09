@@ -1,0 +1,56 @@
+# GitHub Actions workflow for deploying the Matiku LMS app to Firebase Hosting.
+# This file should be placed in your project at: .github/workflows/deploy.yml
+
+name: Deploy to Firebase Hosting
+
+# This workflow runs on every push to the 'main' branch.
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    # Use the latest Ubuntu runner environment
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository's code so the workflow can access it.
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Deploy the application to Firebase Hosting.
+      # This action handles authentication with Firebase and deploys your project files.
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          # The service account key for your Firebase project. You MUST add this as a secret.
+          # See instructions below on how to set this up in your GitHub repository.
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MY_MATIKU_PROJECT }}'
+
+          # The ID of your Firebase project.
+          # This is taken from your firebase.ts configuration file.
+          projectId: my-matiku-project
+
+          # Note: By default, this deploys to your live production site.
+          # You can specify a channelId for preview deployments, e.g., 'preview'.
+          # channelId: live
+
+# --- HOW TO SET UP THE FIREBASE_SERVICE_ACCOUNT SECRET ---
+#
+# 1. Go to your Firebase Project Console > Project settings (gear icon) > Service accounts.
+# 2. Click "Generate new private key" to download a JSON file with your service account credentials.
+#
+# 3. In your GitHub repository, go to: Settings > Secrets and variables > Actions.
+# 4. Click the "New repository secret" button.
+#
+# 5. For the 'Name', paste exactly:
+#    FIREBASE_SERVICE_ACCOUNT_MY_MATIKU_PROJECT
+#
+# 6. For the 'Secret' value, copy the ENTIRE content of the JSON file you downloaded
+#    and paste it into the text box.
+#
+# 7. Click "Add secret".
+#
+# After setting up the secret, any push to the 'main' branch will automatically deploy your app.
+# You will also need a 'firebase.json' file in your project root to configure hosting settings.
