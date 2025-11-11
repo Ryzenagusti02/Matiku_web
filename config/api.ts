@@ -11,4 +11,4 @@ if (!API_KEY) {
 
 // Initialize the client with the key. Using `|| ''` prevents a crash if the key is missing,
 // allowing the app to load. API calls will fail gracefully later if the key is not provided.
-export const ai = new GoogleGenAI({ apiKey: API_KEY || '' });
+export const ai = new GoogleGenAI({ apiKey: API_KEY || 'AIzaSyDeRnHOAlwEqwacRzLVRDMP7sK-EIy0G-I' });
