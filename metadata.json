@@ -1,0 +1,5 @@
+{
+  "name": "LMS Matiku Dashboard",
+  "description": "A modern and intuitive Learning Management System (LMS) dashboard for teachers to monitor student activity, manage modules, and get AI-powered recommendations. Built with React and Tailwind CSS.",
+  "requestFramePermissions": []
+}

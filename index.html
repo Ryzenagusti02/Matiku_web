@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matiku LMS</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Menggunakan Tailwind CSS via CDN untuk menghindari error build PostCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles dari index.css dipindahkan ke sini -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* slate-900 */
+        }
+        
+        /* Animations */
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in {
+            animation: fade-in 0.5s ease-in-out;
+        }
+        
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 0.5s ease-in-out;
+        }
+        
+        @keyframes slide-in-left {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slide-in-right {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fade-out-left {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(-20px); }
+        }
+        @keyframes fade-out-right {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(20px); }
+        }
+        .animate-slide-in-left { animation: slide-in-left 0.3s ease-out; }
+        .animate-slide-in-right { animation: slide-in-right 0.3s ease-out; }
+        .animate-fade-out-left { animation: fade-out-left 0.3s ease-in; }
+        .animate-fade-out-right { animation: fade-out-right 0.3s ease-in; }
+
+        @keyframes grow-width {
+            from { width: 0%; }
+            to { width: var(--target-width); }
+        }
+        .animate-grow-width {
+            animation: grow-width 0.8s ease-out forwards;
+        }
+
+        @keyframes pulse-logo {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+        .animate-pulse-logo {
+            animation: pulse-logo 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Animations for Auth Page */
+        @keyframes zoom-in-fade {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-zoom-in-fade {
+            animation: zoom-in-fade 0.4s ease-out forwards;
+        }
+
+        @keyframes fade-in-form {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in-form {
+            animation: fade-in-form 0.3s ease-out forwards;
+        }
+
+        @keyframes fade-out-form {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        .animate-fade-out-form {
+            animation: fade-out-form 0.3s ease-in forwards;
+        }
+    </style>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@18.3.1",
+        "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+        "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.44.4",
+        "@google/genai": "https://esm.sh/@google/genai@0.16.0",
+        "react-router-dom": "https://esm.sh/react-router-dom@6.25.1",
+        "sweetalert2": "https://esm.sh/sweetalert2@11.12.3",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+        "react/": "https://aistudiocdn.com/react@^19.2.0/",
+        "@supabase/storage-js": "https://aistudiocdn.com/@supabase/storage-js@^2.81.1"
+      }
+    }
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
